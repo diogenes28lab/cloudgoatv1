@@ -31,6 +31,15 @@ jobs:
       with:
         name: CodePackage
         path: project.zip
+
+    - name: Upload & Scan
+      uses: veracode/veracode-uploadandscan-action@0.2.6
+      with:
+        appname: 'cloudgoad'
+        filepath: 'project.zip'
+        vid: "${{secrets.VERACODE_API_ID}}"
+        vkey: "${{secrets.VERACODE_API_KEY}}"        
+        
   
   pipeline-scan:
     needs: build
@@ -75,11 +84,4 @@ jobs:
         
           output-results-sarif: results.sarif
 
-      - name: Veracode Upload And Scan
-        uses: veracode/veracode-uploadandscan-action@0.2.6
-        with:
-          appname: 'goatcloudv1'
-          createprofile: false
-          filepath: result.json
-          vid: '${{ secrets.VERACODE_API_ID }}'
-          vkey: '${{ secrets.VERACODE_API_KEY }}'
+
