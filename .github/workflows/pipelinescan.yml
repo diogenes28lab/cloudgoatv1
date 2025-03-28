@@ -74,4 +74,12 @@ jobs:
           pipeline-results-json: results.json
         
           output-results-sarif: results.sarif
-           
+
+      - name: Veracode Upload And Scan
+        uses: veracode/veracode-uploadandscan-action@0.2.6
+        with:
+          appname: 'goatcloudv1'
+          createprofile: false
+          filepath: result.json
+          vid: '${{ secrets.API_ID }}'
+          vkey: '${{ secrets.API_KEY }}'
