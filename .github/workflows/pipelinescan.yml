@@ -81,5 +81,5 @@ jobs:
           appname: 'goatcloudv1'
           createprofile: false
           filepath: result.json
-          vid: '${{ secrets.API_ID }}'
-          vkey: '${{ secrets.API_KEY }}'
+          vid: '${{ secrets.VERACODE_API_ID }}'
+          vkey: '${{ secrets.VERACODE_API_KEY }}'
